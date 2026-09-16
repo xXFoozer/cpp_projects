@@ -9,7 +9,6 @@ using namespace std;
 
 const int TAM = 15;
 
-// Struct simples só para deixar o código mais organizado (uso opcional, mas ajuda)
 struct Posicao {
     int linha;
     int coluna;
@@ -79,7 +78,6 @@ void inicializarMatriz(int matriz[TAM][TAM]) {
     }
 }
 
-// Sorteia posição do jogador e do tesouro, garantindo que sejam diferentes
 void posicionarJogadorETesouro(int matriz[TAM][TAM], Posicao &jogador, Posicao &tesouro) {
     jogador.linha = rand() % TAM;
     jogador.coluna = rand() % TAM;
@@ -92,7 +90,6 @@ void posicionarJogadorETesouro(int matriz[TAM][TAM], Posicao &jogador, Posicao &
     matriz[jogador.linha][jogador.coluna] = 1;
 }
 
-// Exibe a matriz no console (o tesouro nunca é exibido, apenas o jogador)
 void exibirMatriz(const int matriz[TAM][TAM]) {
     for (int i = 0; i < TAM; i++) {
         for (int j = 0; j < TAM; j++) {
@@ -103,13 +100,10 @@ void exibirMatriz(const int matriz[TAM][TAM]) {
     cout << endl;
 }
 
-// Calcula a distância Manhattan entre duas posições
 int calcularDistancia(const Posicao &a, const Posicao &b) {
     return abs(a.linha - b.linha) + abs(a.coluna - b.coluna);
 }
 
-// Verifica se o movimento é válido (dentro dos limites da matriz)
-// Se válido, calcula a nova posição em novaPosicao e retorna true
 bool validarMovimento(const Posicao &atual, char direcao, int passos, Posicao &novaPosicao) {
     novaPosicao = atual;
 
@@ -129,14 +123,12 @@ bool validarMovimento(const Posicao &atual, char direcao, int passos, Posicao &n
     return true;
 }
 
-// Atualiza a matriz e a posição do jogador: zera a posição antiga, marca a nova com 1
 void executarMovimento(int matriz[TAM][TAM], Posicao &jogador, const Posicao &novaPosicao) {
     matriz[jogador.linha][jogador.coluna] = 0;
     jogador = novaPosicao;
     matriz[jogador.linha][jogador.coluna] = 1;
 }
 
-// Informa se o jogador ficou mais perto ou mais longe do tesouro
 void fornecerDicaProximidade(int distanciaAntiga, int distanciaNova) {
     if (distanciaNova < distanciaAntiga) {
         cout << "Voce esta mais perto do tesouro." << endl;
@@ -147,7 +139,6 @@ void fornecerDicaProximidade(int distanciaAntiga, int distanciaNova) {
     }
 }
 
-// Lê e trata a entrada do usuário (direção e número de passos), validando os tipos
 void lerEntradaUsuario(char &direcao, int &passos) {
     while (true) {
         cout << "Direcao (W/A/S/D): ";
