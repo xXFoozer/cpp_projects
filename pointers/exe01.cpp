@@ -1,6 +1,7 @@
 #include <iostream>
+#include <string>
+#include <vector>
 using namespace std;
-
 void exibirVetor(int vetor[], int tamanho) {
     for (int i = 0; i < tamanho; i++) {
         cout << vetor[i];
